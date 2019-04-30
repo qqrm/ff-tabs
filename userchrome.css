@@ -1,0 +1,107 @@
+/*
+ * Makes the activity stream page look decent with the dark theme.
+ */
+
+@-moz-document url("about:home"),
+url("about:newtab") {
+    .activity-stream {
+        background-color: #474749 !important;
+    }
+}
+
+@-moz-document url("about:blank") {
+    *:empty:not([id]):not([style]) {
+        background-color: #474749 !important;
+    }
+}
+
+
+/*
+ * Automatically hides the built-in reload button until navbar hover or page load
+ */
+
+#reload-button {
+    transition: 300ms !important;
+    /* Animate icon hiding */
+    opacity: 0 !important;
+    /* Make icon transparent */
+    -moz-margin-end: -2em !important;
+    /* Hide icon by offsetting it */
+}
+
+
+/* Show the reload button on navbar hover or page load (animation/stop button) */
+
+#nav-bar:hover #reload-button,
+#stop-reload-button[animate]>#reload-button:not([displaystop]) {
+    transition: 300ms !important;
+    /* Animate icon showing */
+    opacity: 1 !important;
+    /* Make the icon opaque */
+    -moz-margin-end: initial !important;
+    /* Use initial margins to show the icon */
+}
+
+
+/*
+ * Makes the address bar and search bar borderless. 
+ */
+
+#urlbar,
+.searchbar-textbox {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/*
+ * Hide the back and forward buttons
+ */
+
+#main-window :-moz-any(#back-button,
+#forward-button) {
+    display: none !important;
+}
+
+
+/*
+ * This style will hide the tab bar and merge the title bar with the navigation bar. For Windows
+ * Make sure "Title Bar" is unchecked in customize menu.
+ */
+
+.tabbrowser-tab {
+    visibility: collapse !important;
+}
+
+
+/* Add space for drag */
+
+.titlebar-button {
+    height: 42px !important;
+}
+
+#nav-bar {
+    margin-top: -42px;
+    margin-right: 140px;
+    box-shadow: none !important;
+}
+
+[uidensity="compact"]:root .titlebar-button {
+    height: 32px !important;
+}
+
+[uidensity="compact"]:root #nav-bar {
+    margin-top: -32px;
+}
+
+#titlebar-spacer {
+    background-color: var(--chrome-secondary-background-color);
+}
+
+#titlebar-buttonbox-container {
+    background-color: var(--chrome-secondary-background-color);
+}
+
+#sidebar-header {
+    visibility: collapse !important;
+}
