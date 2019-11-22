@@ -105,3 +105,37 @@ url("about:newtab") {
 #sidebar-header {
     visibility: collapse !important;
 }
+
+/* Hidden tabs panel
+ * https://gist.github.com/shvchk/ea637112f88fe29a3f21c141a9fcf709
+ */
+
+#sidebar-box {
+  overflow: hidden;
+  min-width: 65px;
+  max-width: 65px;
+  position: fixed;
+  transition: all 0.2s ease;
+  border-right: 1px solid #ddd;
+} 
+
+#sidebar-box:hover,
+#sidebar-header,
+#sidebar {
+  min-width: 230px !important;
+  max-width: 230px !important;
+}
+
+#sidebar-header,
+#sidebar-splitter {
+    display: none;
+}
+
+#sidebar {
+  height: calc(100vh - 43px);
+}
+
+#sidebar-box:not([hidden]) ~ #appcontent {
+   margin-left: 65px;
+}
+
